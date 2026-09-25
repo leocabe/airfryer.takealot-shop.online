@@ -18,73 +18,76 @@
   --serif:'Cormorant Garamond',Georgia,serif; --sans:'Jost',system-ui,sans-serif;
 }
 *{box-sizing:border-box}
-html,body{margin:0}
+html{ -webkit-text-size-adjust:100%;text-size-adjust:100%}
+html,body{margin:0;width:100%;min-width:0}
+body{max-width:100%}
+body{overflow-wrap:break-word}
 body{background:var(--cream);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
-.wrap{max-width:560px;margin:0 auto;padding:0 20px}
+.wrap{--gutter:clamp(16px,4.5vw,24px);width:100%;max-width:560px;margin:0 auto;padding-left:max(var(--gutter),env(safe-area-inset-left));padding-right:max(var(--gutter),env(safe-area-inset-right))}
 img{max-width:100%;display:block}
 b,strong{font-weight:600}
 
 /* faixa do topo */
-.bar{background:var(--olive);color:var(--cream);text-align:center;padding:11px 16px;font-size:13.5px;line-height:1.4}
+.bar{background:var(--olive);color:var(--cream);text-align:center;padding:12px max(18px,env(safe-area-inset-right)) 12px max(18px,env(safe-area-inset-left));font-size:13px;line-height:1.5}
 .bar b{color:var(--gold-soft)}
 .bar .warn{display:block;margin-top:2px;color:#F2C7A8;font-weight:600;letter-spacing:.02em}
 
 /* abertura */
 .hero{text-align:center;padding:24px 0 0}
+.wrap > *, .hero > *{min-width:0;max-width:100%}
+.bar,h1{white-space:normal;overflow-wrap:anywhere}
 .stop{display:inline-flex;align-items:center;gap:8px;padding:7px 16px;border-radius:999px;background:var(--red);color:#fff;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
 .stop svg{width:15px;height:15px}
-h1{font-family:var(--serif);font-weight:700;font-size:46px;line-height:1;margin:14px 0 0;color:var(--olive);letter-spacing:-.01em}
-.cover{margin:22px -20px 0;overflow:hidden}
-.cover img{width:100%;height:auto}
+h1{font-family:var(--serif);font-weight:700;font-size:clamp(36px,9vw,46px);line-height:1.08;text-wrap:balance;margin:14px 0 0;color:var(--olive);letter-spacing:-.01em}
+.cover{width:100%;max-width:100%;min-width:0;margin:20px 0 0}
+.cover img{display:block;width:100%;max-width:100%;height:auto;object-fit:contain}
 
 /* problema */
 .pain{padding:26px 0 0}
 .pain p{margin:0 0 14px}
-.pain .q{font-family:var(--serif);font-size:25px;line-height:1.2;font-weight:600;color:var(--olive);margin:0 0 16px}
-.fails{list-style:none;padding:16px 18px;margin:0 0 16px;border-radius:18px;background:#F6E6DC;border-left:4px solid var(--red);display:grid;gap:6px}
-.fails li{display:flex;gap:10px;align-items:center;font-weight:600;color:#5E2A1C}
-.fails svg{flex:none;width:18px;height:18px;color:var(--red)}
+.pain .q{font-family:var(--serif);font-size:clamp(24px,6vw,28px);line-height:1.25;font-weight:600;color:var(--olive);margin:0 0 16px}
+.fails{list-style:none;padding:16px 18px;margin:0 0 16px;border-radius:18px;background:#F6E6DC;border-left:4px solid var(--red);display:grid;gap:12px}
+.fails li{display:flex;gap:10px;align-items:flex-start;font-weight:600;color:#5E2A1C}
+.fails svg{flex:none;width:18px;height:18px;margin-top:4px;color:var(--red)}
 
 /* solução */
-.fix{margin-top:8px;background:var(--paper);border:1px solid var(--line);border-radius:24px;padding:24px 20px;box-shadow:0 16px 32px -26px rgba(35,38,28,.6)}
+.fix{margin-top:8px;background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:clamp(18px,5vw,24px) clamp(16px,4vw,20px);box-shadow:0 16px 32px -26px rgba(35,38,28,.6)}
 .fix .k{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--clay);margin:0}
-.fix h2{font-family:var(--serif);font-weight:700;font-size:32px;line-height:1.05;margin:6px 0 12px;color:var(--olive)}
+.fix h2{font-family:var(--serif);font-weight:700;font-size:clamp(29px,7.5vw,34px);line-height:1.12;text-wrap:balance;margin:6px 0 12px;color:var(--olive)}
 .fix h2 em{font-style:italic;color:var(--clay)}
 .fix p{margin:0 0 16px;color:var(--ink-2)}
-.chips{display:flex;flex-wrap:wrap;gap:8px}
-.chips span{display:inline-flex;align-items:center;gap:6px;padding:7px 12px;border-radius:999px;background:#EDF0E5;color:var(--olive-2);font-size:14px;font-weight:500}
+.chips{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.chips span{display:inline-flex;justify-content:center;min-width:0;align-items:center;gap:6px;padding:7px 12px;border-radius:999px;background:#EDF0E5;color:var(--olive-2);font-size:14px;font-weight:500}
 .chips svg{width:14px;height:14px}
-.pro{margin-top:16px;display:grid;gap:8px}
+.pro{margin-top:20px;display:grid;gap:12px}
 .pro div{display:flex;gap:10px;align-items:flex-start;font-weight:500}
 .pro svg{flex:none;width:20px;height:20px;color:var(--gold);margin-top:2px}
 
 /* oferta */
 .offer{margin-top:24px;text-align:center}
 .offer .only{font-size:15px;color:var(--ink-2);margin:0}
-.offer .price{font-family:var(--serif);font-weight:700;font-size:72px;line-height:1;color:var(--olive);margin:4px 0 0}
-.offer .price small{font-size:32px;vertical-align:.85em;margin-right:2px;color:var(--gold)}
-.offer .price i{font-style:normal;font-family:var(--sans);font-size:18px;font-weight:600;color:var(--muted);margin-left:6px}
 .offer .sub{margin:8px auto 0;max-width:420px;color:var(--ink-2)}
-.cta{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;min-height:64px;margin-top:18px;padding:14px 18px;border-radius:18px;background:var(--gold);color:var(--olive);font-family:var(--sans);font-size:16.5px;font-weight:700;line-height:1.25;letter-spacing:.01em;text-decoration:none;text-transform:uppercase;box-shadow:0 14px 26px -14px rgba(0,0,0,.55);transition:transform .15s,background .15s}
-.cta:hover{background:#C9A56A}
-.cta:active{transform:scale(.98)}
-.cta svg{flex:none;width:20px;height:20px}
-@media (prefers-reduced-motion:no-preference){.cta{animation:pulse 2.4s ease-in-out infinite}}
-@keyframes pulse{0%,100%{box-shadow:0 14px 26px -14px rgba(0,0,0,.55),0 0 0 0 rgba(184,149,90,.6)}50%{box-shadow:0 14px 26px -14px rgba(0,0,0,.55),0 0 0 12px rgba(184,149,90,0)}}
-.trust{display:flex;flex-wrap:wrap;justify-content:center;gap:4px 14px;margin-top:12px;font-size:13px;color:var(--muted)}
+.trust{display:flex;flex-wrap:wrap;justify-content:center;gap:4px 14px;margin-top:12px;font-size:13px;color:var(--ink-2)}
 .trust span{display:flex;align-items:center;gap:5px}
 .trust svg{width:14px;height:14px;color:var(--gold)}
 
 /* checkout */
-#checkout{margin-top:26px;scroll-margin-top:16px}
-#checkout:empty{min-height:420px;border:2px dashed var(--gold);border-radius:20px;background:var(--paper);display:grid;place-items:center;text-align:center;padding:24px;color:var(--muted);font-size:14px}
-#checkout:empty::before{content:"Espacio para el checkout (pegar aquí el embed de la plataforma de pago)"}
+#checkout{margin-top:24px;scroll-margin-top:16px;min-width:0}
+#hotmart-sales-funnel{width:100%;min-width:0}
+#hotmart-sales-funnel iframe{display:block;width:100%;min-width:0 !important;max-width:100%;border:0}
 
-.no{display:block;margin:22px auto 0;padding:10px;color:var(--muted);font-size:14px;text-align:center;text-decoration:underline;text-underline-offset:3px}
-.no:hover{color:var(--ink-2)}
-footer{padding:30px 0 36px;text-align:center;font-size:12px;color:var(--muted)}
+.no{display:block;margin:22px auto 0;min-height:48px;padding:14px 8px;color:var(--ink-2);font-size:14px;line-height:1.6;text-align:center;text-decoration:underline;text-underline-offset:3px}
+.no:hover{color:var(--olive)}
+.no:focus-visible{outline:2px solid var(--olive);outline-offset:4px;border-radius:8px}
+footer{padding:26px 20px calc(28px + env(safe-area-inset-bottom));text-align:center;font-size:12px;color:var(--muted)}
 
-@media (max-width:380px){h1{font-size:40px}.offer .price{font-size:62px}.cta{font-size:15px}}
+@media (max-width:360px){
+  body{font-size:16px}
+  .hero{padding-top:20px}
+  .fails{padding:14px 12px}
+  .trust{gap:6px 10px}
+}
+@media (min-width:480px){.chips{grid-template-columns:repeat(4,minmax(0,1fr))}}
 </style>
 </head>
 <body>
@@ -95,7 +98,7 @@ footer{padding:30px 0 36px;text-align:center;font-size:12px;color:var(--muted)}
   <header class="hero">
     <span class="stop"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 2 20h20zM12 10v4.5M12 17.2v.2"/></svg>¡Espera!</span>
     <h1>No cometas este error</h1>
-    <div class="cover"><img src="products/upsell-freidora-capa.jpg" alt="Freidora de aire con el recetario 600 Recetas Saludables para Freidora de Aire: Dejá de pensar qué cocinar." width="1122" height="1402"></div>
+    <div class="cover"><img src="products/upsell-freidora-capa.jpg" alt="Freidora de aire con el recetario 600 Recetas Saludables para Freidora de Aire: Dejá de pensar qué cocinar." width="1122" height="1402" fetchpriority="high" decoding="async"></div>
   </header>
 
   <section class="pain">
@@ -125,10 +128,8 @@ footer{padding:30px 0 36px;text-align:center;font-size:12px;color:var(--muted)}
   </div>
 
   <div class="offer">
-    <p class="only">Solo en esta página, añádelo a tu acceso por</p>
-    <p class="price"><small>$</small>27<i>USD</i></p>
+    <p class="only">Solo en esta página, añade Freidora Sin Límites a tu acceso</p>
     <p class="sub">Recetas saludables para cada día y la forma exacta de prepararlas en tu freidora de aire.</p>
-    <a class="cta" href="#checkout">Sí, quiero mi manual de 600+ recetas para Air Fryer por $27 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     <div class="trust">
       <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="5" y="11" width="14" height="10" rx="2.5"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>Acceso inmediato</span>
       <span>· Pago único</span>
@@ -136,9 +137,15 @@ footer{padding:30px 0 36px;text-align:center;font-size:12px;color:var(--muted)}
     </div>
   </div>
 
-  <!-- CHECKOUT: pegue aqui o código (embed) do checkout da plataforma de pagamento.
-       Enquanto esta div estiver vazia, aparece uma caixa tracejada a marcar o espaço. -->
-  <div id="checkout"></div>
+  <div id="checkout">
+    <!-- HOTMART - Sales Funnel Widget -->
+    <div id="hotmart-sales-funnel"></div>
+    <script src="https://checkout.hotmart.com/lib/hotmart-checkout-elements.js"></script>
+    <script>
+      checkoutElements.init('salesFunnel').mount('#hotmart-sales-funnel');
+    </script>
+    <!-- HOTMART - Sales Funnel Widget -->
+  </div>
 
   <a class="no" href="alivio-em-cada-prato.html">No, gracias. Prefiero seguir improvisando mis recetas en la Air Fryer.</a>
 </main>
